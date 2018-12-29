@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recipe_width">120dp</dimen>
+    <dimen name="recipe_height">150dp</dimen>
+
+    <dimen name="results_margin">8dp</dimen>
+</resources>
