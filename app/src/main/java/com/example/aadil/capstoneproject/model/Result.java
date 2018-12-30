@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Result {
     @SerializedName("id")
-    private int id;
+    private String id;
     @SerializedName("audio")
     private String url;
     @SerializedName("title_original")
@@ -14,7 +14,7 @@ public class Result {
     @SerializedName("image")
     private String image;
 
-    public Result(int id, String url, String episodeTitle, String podcastTitle, String image) {
+    public Result(String id, String url, String episodeTitle, String podcastTitle, String image) {
         this.id = id;
         this.url = url;
         this.episodeTitle = episodeTitle;
@@ -22,11 +22,11 @@ public class Result {
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

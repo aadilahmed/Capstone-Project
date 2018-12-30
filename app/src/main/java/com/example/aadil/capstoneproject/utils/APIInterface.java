@@ -11,11 +11,6 @@ import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 public interface APIInterface {
-    //@GET("api/v1/search")
-    /*Call<List<Podcast>> search(@Header("X-Mashape-Key") String xMashapeKey,
-                        @Header("Accept") String accept,
-                        @Query(value = "q", encoded = true) String query);*/
-
     @GET("api/v1/search")
     Call<ResultList> search(@Header("X-Mashape-Key") String xMashapeKey,
                             @Query(value = "q") String query);

@@ -71,9 +71,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        if(results == null) {
-            return 0;
-        }
         return results.size();
     }
 }

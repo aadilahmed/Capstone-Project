@@ -46,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
         Call<ResultList> call = apiInterface.search(API_KEY, "Giant Bomb");
 
+        Log.wtf("URL Called", call.request().url() + "");
+
         call.enqueue(new Callback<ResultList>() {
             @Override
             public void onResponse(Call<ResultList> call, Response<ResultList> response) {
-                Log.d(TAG, " Before startActivity!!!!!!!!!!!!!!!!");
                 if(!response.isSuccessful()){
                     Toast toast = Toast.makeText(getApplicationContext(), "CALL NOT WORKING", Toast.LENGTH_SHORT);
                     toast.show();
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResultList> call, Throwable t) {
-                Log.d(TAG, " FAILED!!!!!!!!!!!!!!!!");
+                Log.d(TAG, t.getLocalizedMessage());
             }
         });
     }
