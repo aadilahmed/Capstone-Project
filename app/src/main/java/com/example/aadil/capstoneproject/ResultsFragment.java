@@ -33,13 +33,13 @@ public class ResultsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_results, container, false);
 
-        mResultsRV = rootView.findViewById(R.id.rv_results_list);
+        mResultsRV = rootView.findViewById(R.id.rv_result_list);
 
         Bundle bundle = getArguments();
 
         if(bundle != null) {
-            mTwoPane = bundle.getBoolean("mTwoPane");
-            ArrayList<Podcast> results = bundle.getParcelable("results");
+            /*mTwoPane = bundle.getBoolean("mTwoPane");
+            ArrayList<Podcast> results = bundle.getParcelableArrayList("results");
 
             mResultsRV.setHasFixedSize(true);
 
@@ -51,7 +51,7 @@ public class ResultsFragment extends Fragment {
 
             mResultsDividerItemDecoration = new DividerItemDecoration(mResultsRV.getContext(),
                     DividerItemDecoration.VERTICAL);
-            mResultsRV.addItemDecoration(mResultsDividerItemDecoration);
+            mResultsRV.addItemDecoration(mResultsDividerItemDecoration);*/
         }
 
         return rootView;
