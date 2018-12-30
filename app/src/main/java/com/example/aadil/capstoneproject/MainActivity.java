@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -27,12 +28,14 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private static final String API_KEY = BuildConfig.APIKEY;
+    private Boolean mTwoPane = false;
     private Retrofit retrofit;
     private String query;
     private static final String TAG = "MainActivity";
     RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
+    private RecyclerView.ItemDecoration mDividerItemDecoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 mLayoutManager = new LinearLayoutManager(MainActivity.this);
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mRecyclerView.setAdapter(mAdapter);
+
+                mDividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                        DividerItemDecoration.VERTICAL);
+                mRecyclerView.addItemDecoration(mDividerItemDecoration);
             }
 
             @Override

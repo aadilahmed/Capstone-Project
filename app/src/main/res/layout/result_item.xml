@@ -8,6 +8,10 @@
         android:id="@+id/podcast_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintLeft_toRightOf="@+id/album_art"
         app:layout_constraintTop_toBottomOf="@+id/episode_title"/>
 
@@ -16,14 +20,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/album_art"
-        app:layout_constraintBottom_toTopOf="@+id/podcast_title"/>
+        app:layout_constraintBottom_toTopOf="@+id/podcast_title"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
     <ImageView
         android:id="@+id/album_art"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/album_thumbnail_width"
+        android:layout_height="@dimen/album_thumbnail_height"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

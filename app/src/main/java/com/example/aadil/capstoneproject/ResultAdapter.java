@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.aadil.capstoneproject.model.Podcast;
 import com.example.aadil.capstoneproject.model.Result;
 
 import java.util.ArrayList;
@@ -59,14 +58,14 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
         Glide.with(context).load(image).into(viewHolder.mImageView);
 
-        /*viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlayerActivity.class);
                 intent.putExtra("podcast", podcast);
                 context.startActivity(intent);
             }
-        });*/
+        });
     }
 
     @Override

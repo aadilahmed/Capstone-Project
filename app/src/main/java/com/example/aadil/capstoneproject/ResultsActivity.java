@@ -30,7 +30,7 @@ public class ResultsActivity extends AppCompatActivity {
         }*/
 
         if (savedInstanceState == null) {
-            ResultsFragment resultsList = new ResultsFragment();
+            MasterListFragment resultsList = new MasterListFragment();
 
             Bundle bundle = getIntent().getExtras();
             if(bundle != null) {
