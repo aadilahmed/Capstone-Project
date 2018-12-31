@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,12 +33,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MasterListFragment extends Fragment {
+public class MasterListFragment extends Fragment{
     private static final String API_KEY = BuildConfig.APIKEY;
     private Boolean mTwoPane = false;
     private Retrofit retrofit;
     private String query;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ResultsActivity";
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
@@ -62,15 +63,12 @@ public class MasterListFragment extends Fragment {
         Bundle bundle = getArguments();
 
         mTwoPane = bundle.getBoolean("mTwoPane");
-
-        //SearchView searchBar = findViewById(R.id.podcast_search_bar);
+        query = bundle.getString("query");
 
         retrofit = RetrofitClientInstance.getRetrofitInstance();
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
-        Call<ResultList> call = apiInterface.search(API_KEY, "Giant Bomb");
-
-        Log.wtf("URL Called", call.request().url() + "");
+        Call<ResultList> call = apiInterface.search(API_KEY, query);
 
         call.enqueue(new Callback<ResultList>() {
             @Override

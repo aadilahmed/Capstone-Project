@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
@@ -77,7 +76,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if(mTwoPane) {
-                    ((MainActivity) context).getSupportFragmentManager().beginTransaction()
+                    ((ResultsActivity) context).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.player_fragment, playerFragment)
                             .addToBackStack(null)
                             .commit();

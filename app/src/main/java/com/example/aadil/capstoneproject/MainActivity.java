@@ -1,52 +1,43 @@
 package com.example.aadil.capstoneproject;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
-
-import com.example.aadil.capstoneproject.database.FavoriteEntry;
-
-import java.util.List;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.support.v7.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
-    private Boolean mTwoPane = false;
+    private String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(findViewById(R.id.player_fragment) != null) {
-            mTwoPane = true;
+        SearchView searchView = findViewById(R.id.search_bar);
 
-            if(savedInstanceState != null) {
-                PlayerFragment playerFragment = new PlayerFragment();
-
-                Bundle bundle = getIntent().getExtras();
-                playerFragment.setArguments(bundle);
-
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.player_fragment, playerFragment)
-                        .commit();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                intent.putExtra("query", s);
+                startActivity(intent);
+                return true;
             }
-        }
-        else {
-            mTwoPane = false;
-        }
 
-        if (savedInstanceState == null) {
-            MasterListFragment masterList = new MasterListFragment();
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+    }
 
-            Bundle bundle = new Bundle();
-            bundle.putBoolean("mTwoPane", mTwoPane);
-            masterList.setArguments(bundle);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.favorites_menu, menu);
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.master_list_fragment, masterList)
-                    .commit();
-        }
+        return true;
     }
 }
