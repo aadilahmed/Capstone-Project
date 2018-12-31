@@ -1,5 +1,7 @@
 package com.example.aadil.capstoneproject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,8 +10,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
+import com.example.aadil.capstoneproject.database.AppDatabase;
+import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -23,6 +29,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 public class PlayerFragment extends Fragment {
+    private String id;
     private String audio_url;
     private String episodeTitle;
     private String podcastTitle;
@@ -33,6 +40,10 @@ public class PlayerFragment extends Fragment {
     private Boolean playWhenReady = true;
     private int currentWindow = 0;
     private long position = 0;
+
+    private AppDatabase mDb;
+    private final static String prefFile = "preferenceFile";
+    private Boolean podcastIsFavorited;
 
     public PlayerFragment() {
 
@@ -47,11 +58,14 @@ public class PlayerFragment extends Fragment {
             playWhenReady = savedInstanceState.getBoolean("playWhenReady");
         }
 
+        mDb = AppDatabase.getInstance(getActivity().getApplicationContext());
+
         View rootView = inflater.inflate(R.layout.fragment_player, container, false);
         Bundle bundle = getArguments();
 
         Result podcast = bundle.getParcelable("podcast");
 
+        id = podcast.getId();
         audio_url = podcast.getUrl();
         episodeTitle = podcast.getEpisodeTitle();
         podcastTitle = podcast.getPodcastTitle();
@@ -61,6 +75,20 @@ public class PlayerFragment extends Fragment {
 
         TextView playerTitle = rootView.findViewById(R.id.player_title);
         playerTitle.setText(episodeTitle);
+
+        //----------------------------------------------------------------------------------------
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.pref_file_key),
+                Context.MODE_PRIVATE);
+        Boolean defaultVal = getResources().getBoolean(R.bool.notFavorited);
+        podcastIsFavorited = sharedPref.getBoolean(getString(R.string.favorite_key) + id, defaultVal);
+
+        Context context = getContext();
+
+        ToggleButton toggleButton = rootView.findViewById(R.id.favorite_button);
+        toggleButton.setChecked(podcastIsFavorited);
+
+        onFavoritesButtonClicked(podcast, context, toggleButton);
 
         return rootView;
     }
@@ -131,5 +159,40 @@ public class PlayerFragment extends Fragment {
             simpleExoPlayer.release();
             simpleExoPlayer = null;
         }
+    }
+
+    public void onFavoritesButtonClicked(Result podcast, final Context context, final ToggleButton button) {
+        final String id = podcast.getId();
+        final String url = podcast.getUrl();
+        final String episodeTitle = podcast.getEpisodeTitle();
+        final String podcastTitle = podcast.getPodcastTitle();
+        final String image = podcast.getImage();
+
+        button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    final FavoriteEntry favoriteEntry = new FavoriteEntry(id, url, episodeTitle, podcastTitle, image);
+                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDb.favoriteDao().insertFavorite(favoriteEntry);
+                        }
+                    });
+                } else {
+                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            FavoriteEntry favoriteEntry = mDb.favoriteDao().loadFavoriteById(id);
+                            mDb.favoriteDao().deleteFavorite(favoriteEntry);
+                        }
+                    });
+                }
+
+                SharedPreferences sharedPref = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putBoolean(getString(R.string.favorite_key) + id, isChecked);
+                editor.apply();
+            }
+        });
     }
 }

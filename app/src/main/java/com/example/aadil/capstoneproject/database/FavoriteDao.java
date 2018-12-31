@@ -25,5 +25,5 @@ public interface FavoriteDao {
     void updateFavorite(FavoriteEntry favoriteEntry);
 
     @Query("SELECT * FROM favorite WHERE id = :id")
-    FavoriteEntry loadFavoriteById(int id);
+    FavoriteEntry loadFavoriteById(String id);
 }

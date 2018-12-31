@@ -1,9 +1,6 @@
 package com.example.aadil.capstoneproject.utils;
 
-import com.example.aadil.capstoneproject.model.Podcast;
 import com.example.aadil.capstoneproject.model.ResultList;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -4,11 +4,13 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "favorite")
 public class FavoriteEntry {
     @PrimaryKey
-    private int id;
+    @NonNull
+    private String id;
     private String url;
     @ColumnInfo(name = "episode_title")
     private String episodeTitle;
@@ -24,7 +26,7 @@ public class FavoriteEntry {
         this.image = image;
     }
 
-    public FavoriteEntry(int id, String url, String episodeTitle, String podcastTitle, String image) {
+    public FavoriteEntry(String id, String url, String episodeTitle, String podcastTitle, String image) {
         this.id = id;
         this.url = url;
         this.episodeTitle = episodeTitle;
@@ -32,10 +34,10 @@ public class FavoriteEntry {
         this.image = image;
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

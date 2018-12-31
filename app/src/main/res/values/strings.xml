@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Rainy Day Podcasts</string>
     <string name="search_hint">Search</string>
+    <string name="favorite_key">favoriteFlag</string>
+    <string name="pref_file_key">preferenceFile</string>
+    <string name="favorites_menu">Favorites</string>
+    <string name="favorites_button_on">Remove From Favorites</string>
+    <string name="favorites_button_off">Add to Favorites</string>
 </resources>
