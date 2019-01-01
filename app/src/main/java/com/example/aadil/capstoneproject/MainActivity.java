@@ -18,7 +18,6 @@ import static com.example.aadil.capstoneproject.provider.FavoriteContract.BASE_C
 import static com.example.aadil.capstoneproject.provider.FavoriteContract.PATH_FAVORITES;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    private String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

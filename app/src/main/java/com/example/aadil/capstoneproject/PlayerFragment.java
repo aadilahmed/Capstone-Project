@@ -36,6 +36,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerFragment extends Fragment {
     private String id;
@@ -215,6 +216,11 @@ public class PlayerFragment extends Fragment {
     private void updateWidgetList(Context context, Result podcast) {
         /*getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
                 null, null);*/
+
+        Uri uri = FavoriteContract.FavoriteEntry.CONTENT_URI;
+        uri = uri.buildUpon().appendPath(podcast.getId()).build();
+        getContext().getContentResolver().delete(uri,
+                FavoriteContract.FavoriteEntry._ID + " = ?", new String[]{podcast.getId()});
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(FavoriteContract.FavoriteEntry._ID, podcast.getId());
