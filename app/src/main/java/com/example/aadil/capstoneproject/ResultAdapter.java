@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.aadil.capstoneproject.database.AppDatabase;
+import com.example.aadil.capstoneproject.database.AppExecutors;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
 

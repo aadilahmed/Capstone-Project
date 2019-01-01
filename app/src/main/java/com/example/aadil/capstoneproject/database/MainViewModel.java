@@ -1,4 +1,4 @@
-package com.example.aadil.capstoneproject;
+package com.example.aadil.capstoneproject.database;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

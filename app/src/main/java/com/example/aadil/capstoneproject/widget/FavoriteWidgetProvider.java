@@ -24,7 +24,7 @@ public class FavoriteWidgetProvider extends AppWidgetProvider {
 
         widgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         widgetIntent.setData(Uri.parse(widgetIntent.toUri(Intent.URI_INTENT_SCHEME)));
-        views.setRemoteAdapter(appWidgetId, R.id.widget_favorites, widgetIntent);
+        views.setRemoteAdapter(R.id.widget_favorites, widgetIntent);
         views.setEmptyView(R.id.widget_favorites, R.id.empty_favorites_list);
 
         Intent intent = new Intent(context, MainActivity.class);

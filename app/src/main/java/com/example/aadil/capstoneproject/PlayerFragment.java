@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.aadil.capstoneproject.database.AppDatabase;
+import com.example.aadil.capstoneproject.database.AppExecutors;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
 import com.example.aadil.capstoneproject.provider.FavoriteContract;
@@ -195,6 +196,9 @@ public class PlayerFragment extends Fragment {
                             mDb.favoriteDao().deleteFavorite(favoriteEntry);
                         }
                     });
+                    String[] selArgs = {podcast.getId()};
+                    getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
+                            FavoriteContract.FavoriteEntry._ID + " = ", selArgs);
                 }
 
                 SharedPreferences sharedPref = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);

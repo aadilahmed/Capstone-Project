@@ -3,6 +3,7 @@
     package="com.example.aadil.capstoneproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -39,8 +40,12 @@
 
         <provider
             android:name="com.example.aadil.capstoneproject.provider.FavoriteContentProvider"
-            android:authorities="com.example.aadil.capstoneproject"
+            android:authorities="${applicationId}"
             android:exported="true"/>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7336829065422917~4819700774"/>
     </application>
 
 </manifest>

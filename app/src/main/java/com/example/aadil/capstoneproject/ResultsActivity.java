@@ -1,7 +1,8 @@
 package com.example.aadil.capstoneproject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 
 public class ResultsActivity extends AppCompatActivity {
     private Boolean mTwoPane = false;

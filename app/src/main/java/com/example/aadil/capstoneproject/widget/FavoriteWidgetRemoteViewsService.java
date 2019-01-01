@@ -89,8 +89,6 @@ class FavoritesRemoteViewsFactory implements RemoteViewsService.RemoteViewsFacto
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.favorite_widget_item);
 
-        String text = episodeTitle + "\n\n" + podcastTitle;
-
         views.setTextViewText(R.id.favorite_widget_row, episodeTitle);
 
         Intent intent = new Intent();
