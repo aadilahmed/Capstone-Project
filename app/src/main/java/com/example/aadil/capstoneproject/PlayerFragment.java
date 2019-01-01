@@ -196,9 +196,12 @@ public class PlayerFragment extends Fragment {
                             mDb.favoriteDao().deleteFavorite(favoriteEntry);
                         }
                     });
-                    String[] selArgs = {podcast.getId()};
-                    getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
-                            FavoriteContract.FavoriteEntry._ID + " = ", selArgs);
+
+                    Uri uri = FavoriteContract.FavoriteEntry.CONTENT_URI;
+                    uri = uri.buildUpon().appendPath(podcast.getId()).build();
+                    getContext().getContentResolver().delete(uri,
+                            FavoriteContract.FavoriteEntry._ID + " = ?", new String[]{podcast.getId()});
+                    UpdateFavoritesService.startActionUpdateFavoriteWidgets(context);
                 }
 
                 SharedPreferences sharedPref = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);
@@ -210,35 +213,16 @@ public class PlayerFragment extends Fragment {
     }
 
     private void updateWidgetList(Context context, Result podcast) {
-        final String id = podcast.getId();
-        final String url = podcast.getUrl();
-        final String episodeTitle = podcast.getEpisodeTitle();
-        final String podcastTitle = podcast.getPodcastTitle();
-        final String image = podcast.getImage();
-
         /*getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
                 null, null);*/
 
-        //Cite: https://stackoverflow.com/questions/18664835/bulk-inserting-using-an-array-of-contentvalues
-        ArrayList<ContentProviderOperation> operations = new ArrayList<>();
-
         ContentValues contentValues = new ContentValues();
-        contentValues.put(FavoriteContract.FavoriteEntry._ID, id);
-        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_URL, url);
-        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_PODCAST_TITLE, podcastTitle);
-        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_EPISODE_TITLE, episodeTitle);
-        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_IMAGE, image);
-        operations.add(ContentProviderOperation.newInsert(FavoriteContract.FavoriteEntry.CONTENT_URI)
-                .withValues(contentValues).build());
-
-        try {
-            context.getContentResolver().applyBatch(FavoriteContract.AUTHORITY, operations);
-            UpdateFavoritesService.startActionUpdateFavoriteWidgets(context);
-        } catch (OperationApplicationException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-
+        contentValues.put(FavoriteContract.FavoriteEntry._ID, podcast.getId());
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_URL, podcast.getUrl());
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_PODCAST_TITLE, podcast.getPodcastTitle());
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_EPISODE_TITLE, podcast.getEpisodeTitle());
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_IMAGE, podcast.getImage());
+        context.getContentResolver().insert(FavoriteContract.FavoriteEntry.CONTENT_URI, contentValues);
+        UpdateFavoritesService.startActionUpdateFavoriteWidgets(context);
     }
 }

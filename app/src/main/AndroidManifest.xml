@@ -40,7 +40,7 @@
 
         <provider
             android:name="com.example.aadil.capstoneproject.provider.FavoriteContentProvider"
-            android:authorities="${applicationId}"
+            android:authorities="com.example.aadil.capstoneproject"
             android:exported="true"/>
 
         <meta-data
