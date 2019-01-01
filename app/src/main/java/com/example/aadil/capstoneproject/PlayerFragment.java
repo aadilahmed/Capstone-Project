@@ -1,9 +1,13 @@
 package com.example.aadil.capstoneproject;
 
+import android.content.ContentProviderOperation;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +21,8 @@ import android.widget.ToggleButton;
 import com.example.aadil.capstoneproject.database.AppDatabase;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
+import com.example.aadil.capstoneproject.provider.FavoriteContract;
+import com.example.aadil.capstoneproject.widget.UpdateFavoritesService;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -27,6 +33,8 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+
+import java.util.ArrayList;
 
 public class PlayerFragment extends Fragment {
     private String id;
@@ -161,7 +169,7 @@ public class PlayerFragment extends Fragment {
         }
     }
 
-    public void onFavoritesButtonClicked(Result podcast, final Context context, final ToggleButton button) {
+    public void onFavoritesButtonClicked(final Result podcast, final Context context, final ToggleButton button) {
         final String id = podcast.getId();
         final String url = podcast.getUrl();
         final String episodeTitle = podcast.getEpisodeTitle();
@@ -178,6 +186,7 @@ public class PlayerFragment extends Fragment {
                             mDb.favoriteDao().insertFavorite(favoriteEntry);
                         }
                     });
+                    updateWidgetList(context, podcast);
                 } else {
                     AppExecutors.getInstance().diskIO().execute(new Runnable() {
                         @Override
@@ -194,5 +203,38 @@ public class PlayerFragment extends Fragment {
                 editor.apply();
             }
         });
+    }
+
+    private void updateWidgetList(Context context, Result podcast) {
+        final String id = podcast.getId();
+        final String url = podcast.getUrl();
+        final String episodeTitle = podcast.getEpisodeTitle();
+        final String podcastTitle = podcast.getPodcastTitle();
+        final String image = podcast.getImage();
+
+        /*getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
+                null, null);*/
+
+        //Cite: https://stackoverflow.com/questions/18664835/bulk-inserting-using-an-array-of-contentvalues
+        ArrayList<ContentProviderOperation> operations = new ArrayList<>();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(FavoriteContract.FavoriteEntry._ID, id);
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_URL, url);
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_PODCAST_TITLE, podcastTitle);
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_EPISODE_TITLE, episodeTitle);
+        contentValues.put(FavoriteContract.FavoriteEntry.COLUMN_IMAGE, image);
+        operations.add(ContentProviderOperation.newInsert(FavoriteContract.FavoriteEntry.CONTENT_URI)
+                .withValues(contentValues).build());
+
+        try {
+            context.getContentResolver().applyBatch(FavoriteContract.AUTHORITY, operations);
+            UpdateFavoritesService.startActionUpdateFavoriteWidgets(context);
+        } catch (OperationApplicationException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
     }
 }

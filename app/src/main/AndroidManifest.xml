@@ -19,7 +19,28 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlayerActivity" />
-        <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".ResultsActivity" />
+
+        <service android:name=".widget.UpdateFavoritesService" />
+
+        <service
+            android:name=".widget.FavoriteWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver android:name=".widget.FavoriteWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_widget_provider_info" />
+        </receiver>
+
+        <provider
+            android:name="com.example.aadil.capstoneproject.provider.FavoriteContentProvider"
+            android:authorities="com.example.aadil.capstoneproject"
+            android:exported="true"/>
     </application>
 
 </manifest>

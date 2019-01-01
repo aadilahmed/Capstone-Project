@@ -2,7 +2,11 @@ package com.example.aadil.capstoneproject;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ContentProviderOperation;
+import android.content.ContentValues;
+import android.content.OperationApplicationException;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +26,7 @@ import android.widget.Toast;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.model.Result;
 import com.example.aadil.capstoneproject.model.ResultList;
+import com.example.aadil.capstoneproject.provider.FavoriteContract;
 import com.example.aadil.capstoneproject.utils.APIInterface;
 import com.example.aadil.capstoneproject.utils.RetrofitClientInstance;
 
