@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'aadil'
             keyPassword 'password'
-            storeFile file('C:/Users/Aadil/Documents/Android Developer Nanodegree Projects/CapstoneProject/keystore.jks')
+            storeFile file('keystore.jks')
             storePassword 'password'
         }
     }
