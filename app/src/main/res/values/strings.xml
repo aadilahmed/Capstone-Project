@@ -9,4 +9,10 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="no_favorites">No favorites loaded</string>
+    <string name="thumbnail_description">Podcast Thumbnail</string>
+    <string name="play_button_description">Play</string>
+    <string name="pause_button_description">Pause</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="app_ad_id">ca-app-pub-7336829065422917~4819700774</string>
+    <string name="analytics_screen_name">Search</string>
 </resources>
