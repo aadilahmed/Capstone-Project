@@ -38,7 +38,6 @@ public class MasterListFragment extends Fragment{
     private Boolean mTwoPane = false;
     private Retrofit retrofit;
     private String query;
-    private static final String TAG = "ResultsActivity";
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
@@ -75,7 +74,7 @@ public class MasterListFragment extends Fragment{
             public void onResponse(Call<ResultList> call, Response<ResultList> response) {
                 if(!response.isSuccessful()){
                     Toast toast = Toast.makeText(getActivity().getApplicationContext(),
-                            "CALL NOT WORKING", Toast.LENGTH_SHORT);
+                            getResources().getString(R.string.search_error_message), Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
@@ -95,7 +94,7 @@ public class MasterListFragment extends Fragment{
 
             @Override
             public void onFailure(Call<ResultList> call, Throwable t) {
-                Log.d(TAG, t.getLocalizedMessage());
+                Log.d(getResources().getString(R.string.results_activity_tag), t.getLocalizedMessage());
             }
         });
 

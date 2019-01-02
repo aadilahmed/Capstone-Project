@@ -15,4 +15,6 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="app_ad_id">ca-app-pub-7336829065422917~4819700774</string>
     <string name="analytics_screen_name">Search</string>
+    <string name="search_error_message">Search Failed</string>
+    <string name="results_activity_tag">ResultsActivity</string>
 </resources>

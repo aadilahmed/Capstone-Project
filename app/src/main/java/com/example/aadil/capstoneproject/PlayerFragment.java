@@ -1,13 +1,10 @@
 package com.example.aadil.capstoneproject;
 
-import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,13 +28,10 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.ui.PlaybackControlView;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerFragment extends Fragment {
     private String id;
@@ -86,8 +80,6 @@ public class PlayerFragment extends Fragment {
 
         TextView playerTitle = rootView.findViewById(R.id.player_title);
         playerTitle.setText(episodeTitle);
-
-        //----------------------------------------------------------------------------------------
 
         SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.pref_file_key),
                 Context.MODE_PRIVATE);

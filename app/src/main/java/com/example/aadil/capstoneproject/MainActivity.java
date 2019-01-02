@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mFirebaseAnalytics.setCurrentScreen(this,
                 getResources().getString(R.string.analytics_screen_name), null);
 
-        SearchView searchView = findViewById(R.id.search_bar);
+        SearchView searchView = findViewById(R.id.search_podcasts);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
