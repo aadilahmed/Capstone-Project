@@ -48,5 +48,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
 
     implementation 'com.google.android.gms:play-services-ads:17.1.2'
-    implementation 'com.google.android.gms:play-services-analytics:16.0.6'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
 }
+
+apply plugin: 'com.google.gms.google-services'

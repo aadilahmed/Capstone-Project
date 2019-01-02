@@ -14,15 +14,21 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import static com.example.aadil.capstoneproject.provider.FavoriteContract.BASE_CONTENT_URI;
 import static com.example.aadil.capstoneproject.provider.FavoriteContract.PATH_FAVORITES;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mFirebaseAnalytics.setCurrentScreen(this, "Search", null);
 
         SearchView searchView = findViewById(R.id.search_bar);
 

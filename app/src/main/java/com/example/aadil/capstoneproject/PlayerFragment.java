@@ -214,9 +214,6 @@ public class PlayerFragment extends Fragment {
     }
 
     private void updateWidgetList(Context context, Result podcast) {
-        /*getContext().getContentResolver().delete(FavoriteContract.FavoriteEntry.CONTENT_URI,
-                null, null);*/
-
         Uri uri = FavoriteContract.FavoriteEntry.CONTENT_URI;
         uri = uri.buildUpon().appendPath(podcast.getId()).build();
         getContext().getContentResolver().delete(uri,

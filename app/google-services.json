@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "512093998024",
+    "firebase_url": "https://capstone-project-ce31a.firebaseio.com",
+    "project_id": "capstone-project-ce31a",
+    "storage_bucket": "capstone-project-ce31a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512093998024:android:d1fdf2a41522dbbc",
+        "android_client_info": {
+          "package_name": "com.example.aadil.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512093998024-oa657veikr6945vbjaofpjju51gfn4qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTwQ4ZeynNHjI3fvSQu5aHIZf11aeDIZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
