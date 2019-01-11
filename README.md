@@ -16,3 +16,9 @@ Capstone-Project/gradle.properties file as the APIKey variable.
 * Glide
 * Google AdMob
 * Firebase Analytics
+
+## Screenshots
+
+<img src="/Screenshots/Screenshot_1547242812.png" width="400">
+<img src="/Screenshots/Screenshot_1547244534.png" width="400">
+<img src="/Screenshots/Screenshot_1547244773.png" width="400">
