@@ -17,4 +17,5 @@
     <string name="analytics_screen_name">Search</string>
     <string name="search_error_message">Search Failed</string>
     <string name="results_activity_tag">ResultsActivity</string>
+    <string name="search_results_title">Results for</string>
 </resources>

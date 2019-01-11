@@ -2,6 +2,7 @@ package com.example.aadil.capstoneproject;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
@@ -79,6 +81,13 @@ public class MasterListFragment extends Fragment{
                 }
 
                 ArrayList<Result> resultList = response.body().getResultArrayList();
+
+                TextView searchResultTitle = rootView.findViewById(R.id.search_query);
+                searchResultTitle.setTypeface(null, Typeface.BOLD_ITALIC);
+                searchResultTitle.setText(R.string.search_results_title);
+                searchResultTitle.append(" ");
+                searchResultTitle.append(query);
+                searchResultTitle.append(":");
 
                 mRecyclerView = rootView.findViewById(R.id.rv_results_list);
                 mRecyclerView.setHasFixedSize(true);
