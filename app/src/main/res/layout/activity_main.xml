@@ -15,6 +15,12 @@
         android:queryHint="@string/search_hint"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_best_podcasts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_podcasts"/>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"

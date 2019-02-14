@@ -3,6 +3,9 @@
     <dimen name="album_thumbnail_width">50dp</dimen>
     <dimen name="album_thumbnail_height">50dp</dimen>
 
+    <dimen name="best_thumbnail_width">100dp</dimen>
+    <dimen name="best_thumbnail_height">100dp</dimen>
+
     <dimen name="results_margin">8dp</dimen>
 
     <!--
