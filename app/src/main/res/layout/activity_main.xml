@@ -15,11 +15,21 @@
         android:queryHint="@string/search_hint"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/powered_by_listen_notes_logo"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/api_transparent_background_for_white_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_podcasts" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_best_podcasts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_podcasts"/>
+        app:layout_constraintTop_toBottomOf="@id/powered_by_listen_notes_logo"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

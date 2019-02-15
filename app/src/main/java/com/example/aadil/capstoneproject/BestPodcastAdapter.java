@@ -25,10 +25,12 @@ public class BestPodcastAdapter extends RecyclerView.Adapter<BestPodcastAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView mImageView;
         private TextView mPodcastTitleView;
+        private TextView mPublisherView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mPodcastTitleView = itemView.findViewById(R.id.best_podcast_title);
+            mPublisherView = itemView.findViewById(R.id.best_podcast_publisher);
             mImageView = itemView.findViewById(R.id.best_podcast_art);
         }
     }
@@ -52,6 +54,7 @@ public class BestPodcastAdapter extends RecyclerView.Adapter<BestPodcastAdapter.
         String image = channel.getImage();
 
         viewHolder.mPodcastTitleView.setText(podcastTitle);
+        viewHolder.mPublisherView.setText(publisher);
 
         Glide.with(context).load(image).into(viewHolder.mImageView);
 
