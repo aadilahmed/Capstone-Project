@@ -1,8 +1,7 @@
-package com.example.aadil.capstoneproject;
+package com.example.aadil.capstoneproject.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,22 +9,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.aadil.capstoneproject.BuildConfig;
+import com.example.aadil.capstoneproject.R;
 import com.example.aadil.capstoneproject.model.Channel;
 import com.example.aadil.capstoneproject.model.ChannelList;
-import com.example.aadil.capstoneproject.model.Result;
-import com.example.aadil.capstoneproject.model.ResultList;
 import com.example.aadil.capstoneproject.utils.APIInterface;
 import com.example.aadil.capstoneproject.utils.RetrofitClientInstance;
 import com.google.android.gms.ads.AdRequest;

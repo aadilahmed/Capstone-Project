@@ -1,4 +1,4 @@
-package com.example.aadil.capstoneproject;
+package com.example.aadil.capstoneproject.ui;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.example.aadil.capstoneproject.R;
 import com.example.aadil.capstoneproject.database.AppDatabase;
 import com.example.aadil.capstoneproject.database.AppExecutors;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;

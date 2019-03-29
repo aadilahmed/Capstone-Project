@@ -1,4 +1,4 @@
-package com.example.aadil.capstoneproject;
+package com.example.aadil.capstoneproject.ui;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aadil.capstoneproject.BuildConfig;
+import com.example.aadil.capstoneproject.R;
 import com.example.aadil.capstoneproject.database.FavoriteEntry;
 import com.example.aadil.capstoneproject.database.MainViewModel;
 import com.example.aadil.capstoneproject.model.Result;

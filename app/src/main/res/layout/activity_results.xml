@@ -4,6 +4,6 @@
     android:id="@+id/master_list_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultsActivity"
+    tools:context=".ui.ResultsActivity"
     android:name="com.example.aadil.capstoneproject.MasterListFragment">
 </FrameLayout>

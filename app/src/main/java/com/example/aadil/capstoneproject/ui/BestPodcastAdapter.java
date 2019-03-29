@@ -1,4 +1,4 @@
-package com.example.aadil.capstoneproject;
+package com.example.aadil.capstoneproject.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.aadil.capstoneproject.R;
 import com.example.aadil.capstoneproject.model.Channel;
 
 import java.util.ArrayList;
