@@ -8,7 +8,7 @@ Capstone-Project/gradle.properties file as the APIKey variable.
 ## Libraries Used
 * ExoPlayer
 * Retrofit
-* Gson
+* GSON
 * OkHTTP
 * Room
 * LiveData
