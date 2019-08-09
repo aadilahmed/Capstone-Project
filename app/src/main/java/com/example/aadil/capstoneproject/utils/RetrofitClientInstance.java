@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientInstance {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://api.listennotes.com/";
+    private static final String BASE_URL = "https://listen-api.listennotes.com/";
 
     public static Retrofit getRetrofitInstance() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();

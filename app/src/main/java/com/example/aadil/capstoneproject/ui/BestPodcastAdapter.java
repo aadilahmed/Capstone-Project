@@ -1,6 +1,7 @@
 package com.example.aadil.capstoneproject.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,8 @@ import com.example.aadil.capstoneproject.model.Channel;
 import java.util.ArrayList;
 
 public class BestPodcastAdapter extends RecyclerView.Adapter<BestPodcastAdapter.ViewHolder> {
-    ArrayList<Channel> channels;
-    Context context;
+    private ArrayList<Channel> channels;
+    private Context context;
 
     BestPodcastAdapter(ArrayList<Channel> channels) {
         this.channels = channels;
@@ -60,18 +61,23 @@ public class BestPodcastAdapter extends RecyclerView.Adapter<BestPodcastAdapter.
 
         Glide.with(context).load(image).into(viewHolder.mImageView);
 
-        /*viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PlayerActivity.class);
                 intent.putExtra("channel", channel);
                 context.startActivity(intent);
             }
-        });*/
+        });
     }
 
     @Override
     public int getItemCount() {
-        return channels.size();
+        if(channels == null) {
+            return 0;
+        }
+        else {
+            return channels.size();
+        }
     }
 }

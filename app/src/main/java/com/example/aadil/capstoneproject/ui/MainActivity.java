@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 if(!response.isSuccessful()){
                 }
 
+
                 ArrayList<Channel> channelList = response.body().getChannelArrayList();
 
                 mRecyclerView = findViewById(R.id.rv_best_podcasts);

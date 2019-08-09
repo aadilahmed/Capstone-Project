@@ -9,11 +9,11 @@ import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 public interface APIInterface {
-    @GET("api/v1/search")
-    Call<ResultList> search(@Header("X-Mashape-Key") String xMashapeKey,
+    @GET("api/v2/search")
+    Call<ResultList> search(@Header("X-ListenAPI-Key") String xMashapeKey,
                             @Query(value = "q") String query);
 
-    @GET("api/v1/best_podcasts")
-    Call<ChannelList> best_podcasts(@Header("X-Mashape-Key") String xMashapeKey);
+    @GET("api/v2/best_podcasts")
+    Call<ChannelList> best_podcasts(@Header("X-ListenAPI-Key") String xMashapeKey);
 
 }
