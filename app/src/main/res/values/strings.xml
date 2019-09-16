@@ -18,4 +18,7 @@
     <string name="search_error_message">Search Failed</string>
     <string name="results_activity_tag">ResultsActivity</string>
     <string name="search_results_title">Results for</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_favorites">Favorites</string>
 </resources>
